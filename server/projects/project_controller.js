@@ -1,0 +1,48 @@
+const Project = require('./project_model');
+
+module.exports = {
+	getAll(req, res, next) {
+		Project
+			.find({})
+			.then(project => res.json(project))
+			.catch(next)
+	},
+	createOne(req, res, next) {
+		let new_project = Object.assign(new Project, req.body);
+
+		Project
+			.create(new_project)
+			.then(project => res.status(200).json(project))
+			.catch(next);
+	},
+	updateOne(req, res, next) {
+		Project
+			.findByIdAndUpdate(
+				{ _id: req.params.id },
+				{ $set: req.body },
+				{ new: true },
+				(error, project) => {
+					if (error) {
+						next(error);
+					} else {
+						res.status(200).json(project);
+					}
+				}
+			);
+	},
+	deleteOne(req, res, next) {
+		Project
+			.findByIdAndRemove(
+				{ _id: req.params.id },
+				(error, project) => {
+					if (error) {
+						next(error);
+					} else {
+						res
+							.status(200)
+							.send(`Congrats ! The project named "${project.title}" was deleted successfully !`);
+					}
+				}
+			)
+	}
+};
