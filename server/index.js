@@ -5,7 +5,7 @@ const projectRoutes = require('./routes/projects');
 const userRoutes = require('./routes/user');
 const mongo_url = process.env.MONGO_URL || 'mongodb://localhost/portfolio';
 const mongoose = require('mongoose');
-
+const fixtures = require('./imports/fixtures');
 const app = express();
 
 // TODO: mettre les options en second param de la méthode connect
@@ -23,7 +23,7 @@ const options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 };
 
-mongoose.connect(mongo_url, options, (err) => {
+mongoose.connect(mongo_url, fixtures, options, (err) => {
 	if (err !== undefined) console.log(err);
 
 	console.log(`mongo connection established at ${mongo_url}`);

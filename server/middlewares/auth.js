@@ -1,4 +1,4 @@
-const config = require('../config/index.js');
+const config = require('../imports/config/index.js');
 const moment = require('moment');
 const jwt = require('jsonwebtoken');
 
