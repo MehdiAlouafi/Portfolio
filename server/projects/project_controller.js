@@ -8,12 +8,12 @@ module.exports = {
 			.catch(next)
 	},
 	createOne(req, res, next) {
-		let new_project = Object.assign(new Project, req.body);
+		let new_project = Object.assign(new Project(), req.body);
 
 		Project
 			.create(new_project)
 			.then(project => res.status(200).json(project))
-			.catch(next);
+			.catch(next); 
 	},
 	updateOne(req, res, next) {
 		Project
