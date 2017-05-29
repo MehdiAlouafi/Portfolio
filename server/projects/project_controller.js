@@ -4,16 +4,22 @@ module.exports = {
 	getAll(req, res, next) {
 		Project
 			.find({})
-			.then(project => res.json(project))
+			.then(projects => res.json(projects))
 			.catch(next)
+	},
+	getOne(req, res, next) {
+		Project
+			.find({ _id: req.params.id })
+			.then(project => res.json(project))
+			.catch(next);
 	},
 	createOne(req, res, next) {
 		let new_project = Object.assign(new Project(), req.body);
 
 		Project
 			.create(new_project)
-			.then(project => res.status(200).json(project))
-			.catch(next); 
+			.then(project => res.json(project))
+			.catch(next);
 	},
 	updateOne(req, res, next) {
 		Project
@@ -25,7 +31,7 @@ module.exports = {
 					if (error) {
 						next(error);
 					} else {
-						res.status(200).json(project);
+						res.json(project);
 					}
 				}
 			);
