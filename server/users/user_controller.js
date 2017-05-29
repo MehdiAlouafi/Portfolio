@@ -22,7 +22,7 @@ module.exports = {
 				return res.status(401).json({ message: 'No User found' });
 			}
 			user.comparePwd(req.body.password, (err, isMatch) => {
-				if (err && !isMatch) {
+				if (isMatch === false) {
 					return res.status(401).json({ message: 'Invalid email/password' });
 				} else {
 					return res.json({ message: 'Now logged in', token: createToken(user.name) });
