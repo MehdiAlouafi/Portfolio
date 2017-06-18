@@ -6,7 +6,20 @@ const userRoutes = require('./routes/user');
 const mongo_url = process.env.MONGO_URL || 'mongodb://localhost/portfolio';
 const mongoose = require('mongoose');
 const fixtures = require('./imports/fixtures');
+const dev_mode = process.env.NODE_ENV !== 'production';
 const app = express();
+
+if (dev_mode) {
+    app.use(morgan('dev'));
+
+    // Enable CORS so that we can make HTTP request from webpack-dev-server
+    	app.use((req, res, next) => {
+    		res.header('Access-Control-Allow-Origin', '*');
+    		res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE');
+    		res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
+    		next();
+    	});
+}
 
 // TODO: mettre les options en second param de la méthode connect
 // mettre un mdp / user à la bdd mongo en prod
@@ -29,8 +42,6 @@ mongoose.connect(mongo_url, fixtures, options, (err) => {
 	console.log(`mongo connection established at ${mongo_url}`);
 });
 mongoose.Promise = global.Promise;
-
-app.use(morgan('dev'));
 
 app.use('/api', projectRoutes);
 app.use('/', userRoutes);
