@@ -11,7 +11,16 @@ module.exports = env => {
 			path: resolve(__dirname, 'client/dist'),
 			pathinfo: !env.prod
 		},
-		devtool: 'source-map',
+		devtool: env.prod ? 'source-map' : 'eval-source-map',
+        devServer: env.prod ? null : {
+            historyApiFallback: true,
+			hot: true,
+			inline: true,
+			stats: 'errors-only',
+			host: '0.0.0.0',
+			port: env.port || 8080,
+			contentBase: './client/dist'
+        },
 		bail: true,
 		module: {
             rules: [
@@ -23,7 +32,10 @@ module.exports = env => {
                     }
                 }
             ]
-        }
+        },
+        plugins: [
+            addPlugin(true, new webpack.HotModuleReplacementPlugin())
+        ]
 	}
 };
 // const base_config = {
