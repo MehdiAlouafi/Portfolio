@@ -16,7 +16,8 @@ const { verifyAuth } = require('../middlewares/auth');
 	})
 */
 projectRouter
-	.get('/projects', ProjectController.getAll)
+	.get('/allProjects', ProjectController.getPublishedOnes)
+	.get('/projects', verifyAuth, ProjectController.getAll)
 	.get('/projects/:id', ProjectController.getOne)
 	.post('/projects', verifyAuth, bodyParser, ProjectController.createOne)
 	.put('/projects/:id', verifyAuth, bodyParser, ProjectController.updateOne)

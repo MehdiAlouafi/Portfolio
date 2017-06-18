@@ -1,6 +1,12 @@
 const Project = require('./project_model');
 
 module.exports = {
+    getPublishedOnes(req, res, next) {
+        Project
+            .find({ published: true })
+            .then(projects => res.json(projects))
+            .catch(next);
+    },
 	getAll(req, res, next) {
 		Project
 			.find({})
