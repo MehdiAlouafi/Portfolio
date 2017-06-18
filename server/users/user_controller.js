@@ -19,11 +19,13 @@ module.exports = {
 	login(req, res) {
 		User.findOne({ email: req.body.email }, '+password', (err, user) => {
 			if (!user) {
-				return res.status(401).json({ message: 'No User found' });
+                res.statusMessage = 'No User found';
+				return res.status(401).end();
 			}
 			user.comparePwd(req.body.password, (err, isMatch) => {
 				if (isMatch === false) {
-					return res.status(401).json({ message: 'Invalid email/password' });
+                    res.statusMessage = 'Invalid email/password';
+					return res.status(401).end();
 				} else {
 					return res.json({ message: 'Now logged in', token: createToken(user.name) });
 				}
