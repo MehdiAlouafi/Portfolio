@@ -21,6 +21,6 @@ projectRouter
 	.get('/projects/:id', ProjectController.getOne)
 	.post('/projects', verifyAuth, bodyParser, ProjectController.createOne)
 	.put('/projects/:id', verifyAuth, bodyParser, ProjectController.updateOne)
-	.delete('/projects/:id', verifyAuth, bodyParser, ProjectController.deleteOne)
+	.delete('/projects/:id', verifyAuth, ProjectController.deleteOne)
 
 module.exports = projectRouter;
