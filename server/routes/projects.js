@@ -1,7 +1,7 @@
 const projectRouter = require('express').Router();
 const ProjectController = require('../projects/project_controller');
 const Project = require('../projects/project_model');
-const bodyParser = require('body-parser').urlencoded({ extended: true });
+const bodyParser = require('body-parser').json();
 const { verifyAuth } = require('../middlewares/auth');
 
 /*
