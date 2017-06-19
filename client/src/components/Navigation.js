@@ -12,6 +12,10 @@ const Navigation = (props) => {
             }
             <NavLink
                 activeStyle={{ backgroundColor: '#FC153B'}}
+                exact
+                to='/'>Home</NavLink>
+            <NavLink
+                activeStyle={{ backgroundColor: '#FC153B'}}
                 to='/projets'>Projets</NavLink>
             <NavLink
                 activeStyle={{ backgroundColor: '#FC153B'}}
