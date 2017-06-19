@@ -10,19 +10,16 @@ class ProjectList extends React.Component {
         };
     }
     componentDidMount() {
-        const cachedProjects = localStorage.getItem('projects');
-        if (cachedProjects !== null) {
-            this.setState({ projects: JSON.parse(cachedProjects) });
-        } else {
-            console.log('FETCHING');
+        // const cachedProjects = localStorage.getItem('projects');
+        // if (cachedProjects !== null) {
+        //     this.setState({ projects: JSON.parse(cachedProjects) });
+        // } else {
+        //     console.log('FETCHING');
             fetch(`http://localhost:8080/api/allProjects`)
                 .then(res => res.json())
-                .then(projects => {
-                    this.setState({ projects });
-                    localStorage.setItem('projects', JSON.stringify(projects));
-                })
+                .then(projects => this.setState({ projects }))
                 .catch(err => console.log(err));
-        }
+        // }
     }
     render() {
         return (
