@@ -3,6 +3,7 @@ const ProjectController = require('../projects/project_controller');
 const Project = require('../projects/project_model');
 const bodyParser = require('body-parser').json();
 const { verifyAuth } = require('../middlewares/auth');
+const upload = require('../imports/multer');
 
 /*
 	- 	exemple de requête et de récupération de l'id : Mon-Project-perso-OBJECTID
@@ -16,6 +17,12 @@ const { verifyAuth } = require('../middlewares/auth');
 	})
 */
 projectRouter
+    .post('/upload/:title', (req, res) => {
+        upload(req, res, err => {
+            if (err) console.log(err);
+            res.status(200).send(req._filename);
+        });
+    })
 	.get('/allProjects', ProjectController.getPublishedOnes)
 	.get('/projects', verifyAuth, ProjectController.getAll)
 	.get('/projects/:id', ProjectController.getOne)
