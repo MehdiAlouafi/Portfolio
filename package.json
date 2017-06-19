@@ -21,6 +21,7 @@
     "moment": "^2.18.1",
     "mongoose": "^4.10.2",
     "morgan": "^1.8.1",
+    "rc-switch": "^1.5.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1"
@@ -34,7 +35,9 @@
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.3",
     "extract-text-webpack-plugin": "^2.1.2",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
