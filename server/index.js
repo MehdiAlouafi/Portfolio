@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const fixtures = require('./imports/fixtures');
 const dev_mode = process.env.NODE_ENV !== 'production';
 const app = express();
+const path = require('path');
 
 if (dev_mode) {
     app.use(morgan('dev'));
@@ -20,6 +21,9 @@ if (dev_mode) {
     		next();
     	});
 }
+
+app.use(express.static(path.resolve(__dirname + '/../client/dist')));
+app.use('/img', express.static(path.resolve(__dirname + '/../uploads')));
 
 // TODO: mettre les options en second param de la méthode connect
 // mettre un mdp / user à la bdd mongo en prod
