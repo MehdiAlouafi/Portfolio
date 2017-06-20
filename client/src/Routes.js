@@ -17,7 +17,7 @@ const Routes = () => (
             <Route path='/projects/:id' component={ProjectPage} />
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/editor' component={Editor} />
-            <Route path='(/|/about|/connexion)' component={Home} />
+            <Route path='(/|/about)' component={Home} />
             <Route component={NotFound} />
         </Switch>
     </div>
