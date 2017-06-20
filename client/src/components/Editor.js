@@ -6,7 +6,7 @@ class Editor extends React.Component {
         this.state = {
             title: '',
             content: [
-                { type: 'p', text: 'gloubiboula'}
+                { type: 'p', text: ''}
             ]
         };
         this.handleParagraphChange = this.handleParagraphChange.bind(this);
@@ -18,10 +18,7 @@ class Editor extends React.Component {
         if (keyCode === 13) {
             this.setState(prevState => ({
                 ...prevState,
-                content: [].concat(prevState.content, {
-                    type: 'p',
-                    text: ''
-                })
+                content: [...prevState.content, { type: 'p', text: '' }]
             }));
         }
     }
@@ -43,16 +40,24 @@ class Editor extends React.Component {
         document.addEventListener('keydown', this.addParagraph);
     }
     componentWillUnmount() {
+        console.log('leaving');
         document.removeEventListener('keydown', this.addParagraph);
     }
     handleUpload(event) {
         const form = new FormData();
         const [ file ] = event.target.files;
-        form.append('image', file);
-        fetch(`http://localhost:8080/api/upload/${this.state.title}`, {
+        const options = {
             method: 'POST',
             body: form
-        }).then(res => console.log(res)).catch(err => console.log(err));
+        };
+        form.append('image', file);
+        fetch(`http://localhost:8080/api/upload/${this.state.title}`, options)
+            .then(res => res.text())
+            .then(filename => this.setState(prevState => ({
+                ...prevState,
+                content: [...prevState.content, { type: 'image', src: filename }]
+            })))
+            .catch(err => console.log(err));
     }
     render() {
         return (
