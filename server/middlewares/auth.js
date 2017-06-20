@@ -16,13 +16,15 @@ const verifyAuth = (req, res, next) => {
 	if (token !== undefined) {
 		jwt.verify(token, config.TOKEN_SECRET, (err, payload) => {
 			if (err && !payload) {
-				return res.status(500).send('Failed to authenticate token');
+                res.statusMessage = 'Failed to authenticate token';
+				return res.status(500).end()
 			} else {
 				next();
 			}
 		});
 	} else {
-		return res.status(403).send('No token provided');
+        res.statusMessage = 'No token provided';
+		return res.status(403).end()
 	}
 };
 
