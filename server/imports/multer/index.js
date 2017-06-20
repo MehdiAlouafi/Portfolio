@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
 
     }
 });
-const upload = multer({ storage }).single('image');
+// 1mb === 1e6 bytes === 1000000
+const upload = multer({ storage, limits: { fileSize: 1000000 } }).single('image');
 
 module.exports = upload;
