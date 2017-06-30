@@ -11,16 +11,14 @@ import ProjectPage from './components/ProjectPage';
 import NotFound from './components/NotFound';
 
 const Routes = () => (
-    <div>
-        <Switch>
-            <Route exact path='/projets' component={ProjectList} />
-            <Route path='/projects/:id' component={ProjectPage} />
-            <Route path='/dashboard' component={Dashboard} />
-            <Route path='/editor' component={Editor} />
-            <Route path='(/|/about)' component={Home} />
-            <Route component={NotFound} />
-        </Switch>
-    </div>
+    <Switch>
+        <Route exact path='/projets' component={ProjectList}/>
+        <Route path='/projects/:id' component={ProjectPage} />
+        <Route path='/dashboard' component={Dashboard} />
+        <Route path='/editor' component={Editor} />
+        <Route path='(/|/about)' component={Home} />
+        <Route component={NotFound} />
+    </Switch>
 );
 
 export default Routes;
