@@ -1,7 +1,6 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectPage from './ProjectPage';
-import AnimatedWrapper from './AnimatedWrapper';
 
 class ProjectList extends React.Component {
     constructor(props) {
@@ -37,4 +36,4 @@ class ProjectList extends React.Component {
 
 }
 
-export default AnimatedWrapper(ProjectList);
+export default ProjectList;
