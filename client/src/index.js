@@ -1,3 +1,4 @@
+import '../dist/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
@@ -7,9 +8,11 @@ import Routes from './Routes';
 
 const App = () => (
     <Router>
-        <div>
-            <Navigation />
-            <Routes />
+        <div className='app'>
+            <div className="container">
+                <Navigation />
+                <Routes />
+            </div>
         </div>
     </Router>
 )
