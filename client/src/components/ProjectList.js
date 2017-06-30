@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectPage from './ProjectPage';
+import AnimatedWrapper from './AnimatedWrapper';
 
 class ProjectList extends React.Component {
     constructor(props) {
@@ -23,12 +24,12 @@ class ProjectList extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className='projects'>
+                <h1>Project List</h1>
                 { this.state.projects.map((project, i) => (
                     <ProjectCard
                         key={i}
-                        project={project}
-                    />
+                        project={project} />
                 )) }
             </div>
         );
@@ -36,4 +37,4 @@ class ProjectList extends React.Component {
 
 }
 
-export default ProjectList;
+export default AnimatedWrapper(ProjectList);
