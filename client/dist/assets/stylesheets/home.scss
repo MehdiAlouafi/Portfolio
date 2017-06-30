@@ -1,0 +1,50 @@
+$container: 1060px;
+$bold: 700;
+.app {
+    padding: 20px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        max-width: $container;
+        width: 100%;
+        .homepage {
+            h1 { transition: all 0.3s ease-out; margin-top: 25%; }
+            &.about h1 { margin-top: 5%;}
+        }
+    }
+}
+
+nav {
+    width: 100%;
+    margin-right: auto;
+    a {
+        position: relative;
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        margin-right: 20px;
+        &.active {
+            font-weight: $bold;
+            &:after {
+                display: block;
+                height: 5px;
+                position: absolute;
+                bottom: -10px;
+                left: 0; right: 0;
+                background-color: $light_green;
+                content: ' ';
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    nav {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background-color: #333;
+        padding: 20px;
+        text-align: center;
+        a {color: #fff;}
+    }
+}
