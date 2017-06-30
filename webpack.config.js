@@ -11,7 +11,7 @@ module.exports = env => {
 			path: resolve(__dirname, 'client/dist'),
 			pathinfo: !env.prod
 		},
-		devtool: env.prod ? 'source-map' : 'eval-source-map',
+		devtool: env.prod ? 'source-map' : 'cheap-module-source-map',
         devServer: env.prod ? null : {
             historyApiFallback: true,
 			hot: true,
@@ -30,6 +30,15 @@ module.exports = env => {
                     use: {
                         loader: 'babel-loader'
                     }
+                },
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    use: [
+                        { loader: 'style-loader' },
+                        { loader: 'css-loader' },
+                        { loader: 'sass-loader' }
+                    ]
                 }
             ]
         },
