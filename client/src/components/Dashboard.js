@@ -110,6 +110,7 @@ class Dashboard extends React.Component {
         const label = this.state.projects.length === 0 ? 'Pas encore de projets, addOne' : 'addOne';
         const projects = this.state.projects.map((project, i) => (
             <ProjectCard
+                className='dashboard__projects__card'
                 dashboard
                 key={i}
                 deleteProject={this.deleteProject}
@@ -117,12 +118,13 @@ class Dashboard extends React.Component {
                 project={project} />
         ));
         return (
-            <div>
-                <h1>Dashboard</h1>
-                { projects }
-                <Link to='/editor'>
+            <div className='dashboard'>
+                <Link className='dashboard__button' to='/editor'>
                     {label}
                 </Link>
+                <div className="dashboard__projects">
+                    { projects }
+                </div>
             </div>
         );
     }

@@ -1,0 +1,62 @@
+.login {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-color: rgba($black, 0.9);
+    .content {
+        position: relative;
+        &:before {
+            content: ' ';
+            display: block;
+            z-index: -1;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background-color: $blue;
+            transform: translate(-20px, 20px);
+            transition: transform 500ms cubic-bezier(0.42, 0, 0.23, 1.21);
+        }
+        padding: 20px;
+        background-color: white;
+        max-height: 450px;
+        width: 550px;
+        &__message {
+            font-weight: $bold;
+            font-size: 3rem;
+            margin-top: 0px;
+        }
+        &__http {
+            background-color: rgba($warning, 0.3);
+            padding: 10px;
+            font-size: 18px;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            input {
+                display: block;
+                width: 100%;
+                border-style: none;
+                background-color: #eee;
+                margin-bottom: 20px;
+                padding: 10px 15px;
+                font-size: 18px;
+                &[type='email'] {
+                }
+                &[type='password'] {
+                }
+            }
+            button {
+                cursor: pointer;
+                border-style: none;
+                background: none;
+                color: white;
+                background-color: $black;
+                font-size: 18px;
+                padding: 10px 30px;
+            }
+        }
+    }
+}

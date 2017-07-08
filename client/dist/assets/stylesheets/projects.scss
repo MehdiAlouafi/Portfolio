@@ -1,0 +1,40 @@
+.projects {
+    width: 100%;
+    padding: 0px 20px;
+    &__card {
+        display: flex;
+        flex-direction: column;
+        background-color: #fafafa;
+        padding: 20px 30px;
+        border-bottom: 2px dashed #eee;
+        &__title {
+            font-weight: $bold;
+            margin: 0px;
+        }
+        &__date {
+            margin-top: 0px;
+            color: rgba($black, 0.5);
+        }
+        &__description {}
+        &__link {
+            margin-left: auto;
+            background-color: $blue;
+            position: relative;
+            color: #fff;
+            display: inline-block;
+            padding: 15px 25px;
+            z-index: 2;
+            box-shadow: -5px 5px 0px $black;
+            transition: background-color 0.1s ease-in-out,
+                        box-shadow 0.1s cubic-bezier(0.42, 0, 0.23, 1.21);
+            &:hover {
+                background-color: $black;
+                color: #fff;
+                box-shadow: -5px 5px 0px $blue;
+            }
+            &:active {
+                box-shadow: 0px 0px 0px $black;
+            }
+        }
+    }
+}

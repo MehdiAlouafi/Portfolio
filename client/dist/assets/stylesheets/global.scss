@@ -1,14 +1,24 @@
 $purple: #654396;
-$green: #00D180;
+$green: #44DB5E;
 $blue: #1162FF;
 $light_green: #50E3C2;
+$warning: #E81E46;
+$body: #333;
+$black: #333;
+$container: 1060px;
+$bold: 700;
+$bordersColor: #333;
 
 * {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    color: #333;
+    color: $black;
+    box-sizing: border-box;
 }
 body, html {
     padding: 0;
     margin: 0;
+}
+a {
+    text-decoration: none;
 }

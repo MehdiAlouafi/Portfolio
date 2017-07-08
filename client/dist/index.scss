@@ -1,7 +1,11 @@
 @import '/assets/stylesheets/global';
 @import '/assets/stylesheets/home';
 @import '/assets/stylesheets/rc-switch';
-
+@import '/assets/stylesheets/navbar';
+@import '/assets/stylesheets/dashboard';
+@import '/assets/stylesheets/login';
+@import '/assets/stylesheets/loader';
+@import '/assets/stylesheets/projects';
 .fade-enter{
   opacity: 0;
   z-index: 1;

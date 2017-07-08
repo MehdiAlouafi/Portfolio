@@ -1,13 +1,20 @@
 nav {
     width: 100%;
-    margin-right: auto;
+    border-bottom: 5px solid #FAFAFA;
+    padding: 0px 20px 5px 20px;
+    margin-bottom: 20px;
     a {
         position: relative;
         display: inline-block;
-        padding: 5px;
         text-decoration: none;
+        padding: 10px 15px;
         margin-right: 20px;
+        color: #EEE;
+        height: 100%;
+        transition: color 0.3s ease-out;
+        &:hover { color: #999  }
         &.active {
+            color: $black;
             font-weight: $bold;
             &:after {
                 display: block;

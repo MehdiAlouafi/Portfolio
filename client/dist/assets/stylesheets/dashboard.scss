@@ -1,0 +1,66 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+    &__projects__card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #FAFAFA;
+        padding: 15px 20px;
+        h1 {
+            margin: 0;
+        }
+        .title {
+            font-weight: $bold;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+        .date {
+            margin-top: 0;
+            color: #888;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+            &__switch, &__trash, &__link {
+                margin-right: 20px;
+            }
+            &__trash {
+                border-style: none;
+                background-color: transparent;
+                padding: 10px 20px;
+                cursor: pointer;
+                color: rgba($black, 0.7) !important;
+                &:active, &:focus {
+                    outline: none;
+                }
+            }
+
+            &__link {
+                background-color: #fff;
+                border: 2px dashed $light_green;
+                padding: 10px 20px;
+                &:hover {
+                    background-color: #fafafa;
+                }
+                &:active {
+                    background-color: #eee;
+                }
+
+            }
+        }
+    }
+    &__button {
+        margin-left: auto;
+        margin-bottom: 20px;
+        display: inline-block;
+        padding: 15px 20px;
+        background-color: $green;
+        text-decoration: none;
+        color: #fff;
+        box-shadow: 0px 5px 0px #24A63A;
+    }
+}

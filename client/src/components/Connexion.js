@@ -5,7 +5,8 @@ class Connexion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            message: '',
+            isOpen: false
         };
     }
     handleSubmit(e) {
@@ -37,13 +38,16 @@ class Connexion extends React.Component {
     render() {
         if (this.state.loggedIn) return <Redirect to='/dashboard'/>
         return (
-            <div>
-                <h1>{this.state.message}</h1>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input type="email" ref={node => this.email = node}/>
-                    <input type="password" ref={node => this.password = node}/>
-                    <button type="submit">Login</button>
-                </form>
+            <div className={`login ${this.state.isOpen}`}>
+                <div className="content">
+                    <h1 className='content__message'>Login required</h1>
+                    <p className='content__http'>{this.state.message}</p>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                        <input type="email" ref={node => this.email = node}/>
+                        <input type="password" ref={node => this.password = node}/>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
             </div>
         );
     }

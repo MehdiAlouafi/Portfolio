@@ -1,12 +1,14 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectPage from './ProjectPage';
+import Loader from './Loader';
 
 class ProjectList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            projects: []
+            projects: [],
+            hasFetched: false
         };
     }
     componentDidMount() {
@@ -17,11 +19,12 @@ class ProjectList extends React.Component {
         //     console.log('FETCHING');
             fetch(`http://localhost:8080/api/allProjects`)
                 .then(res => res.json())
-                .then(projects => this.setState({ projects }))
-                .catch(err => console.log(err));
+                .then(projects => this.setState({ projects, hasFetched: true }))
+                .catch(err => this.setState({ hasFetched: true, err }));
         // }
     }
     render() {
+        if (!this.state.hasFetched) return <Loader />
         return (
             <div className='projects'>
                 <h1>Project List</h1>

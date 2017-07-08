@@ -48,8 +48,8 @@
   }
 
   &-checked {
-    border: 1px solid #87d068;
-    background-color: #87d068;
+    border: 1px solid $green;
+    background-color: $green;
 
     .rc-switch-inner {
       left: 6px;
