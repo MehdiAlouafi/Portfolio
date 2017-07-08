@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import About from './About';
 import Connexion from './Connexion';
 
 class Home extends React.Component {
@@ -36,14 +37,23 @@ class Home extends React.Component {
         document.removeEventListener('keydown', this.handleKonamiCode);
     }
     render() {
+        const [ blank, pathname ] = this.props.location.pathname.split('/');
+
         return (
-            <div>
+            <div className={`homepage`}>
+                {/* <Connexion/> */}
                 {this.state.showLogin && <Connexion />}
-                <h1>
-                    <strong>Salut</strong> ! Je m'appel Mehdi<br/>
+                <h1 className={` hompage__kicker ${pathname} f1-ns f2-m f3`}>
+                    <strong>Salut</strong> ! Je m'appelle Mehdi<br/>
                     Et j'apprends à coder, <strong>continuellement</strong>.
                 </h1>
-                <Route exact path='/about' render={() => <h1>About</h1>} />
+
+                <Route
+                    location={this.props.location}
+                    key={this.props.location.key}
+                    exact path='/about'
+                    component={About} />
+
             </div>
         );
     }
