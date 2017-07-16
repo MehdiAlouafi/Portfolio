@@ -3,16 +3,16 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 3000;
 const projectRoutes = require('./routes/projects');
 const userRoutes = require('./routes/user');
-const mongo_url = process.env.MONGO_URL || 'mongodb://localhost/portfolio';
+const { MONGO_USERNAME, MONGO_SECRET } = require('./imports/config/index');
 const mongoose = require('mongoose');
 const fixtures = require('./imports/fixtures');
 const dev_mode = process.env.NODE_ENV !== 'production';
+const mongo_url = !dev_mode ? `mongodb://${MONGO_USERNAME}:${MONGO_SECRET}@ds161012.mlab.com:61012/portfolio` : 'mongodb://localhost/portfolio';
 const app = express();
 const path = require('path');
 
 if (dev_mode) {
     app.use(morgan('dev'));
-
     // Enable CORS so that we can make HTTP request from webpack-dev-server
     	app.use((req, res, next) => {
     		res.header('Access-Control-Allow-Origin', '*');
@@ -40,11 +40,10 @@ const options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 };
 
-mongoose.connect(mongo_url, fixtures, options, (err) => {
-	if (err !== undefined) console.log(err);
+mongoose.connect(mongo_url, fixtures, options, (err) => console.log(err || 'everything worked fine'));
 
-	console.log(`mongo connection established at ${mongo_url}`);
-});
+const Project = require('./projects/project_controller.js');
+
 mongoose.Promise = global.Promise;
 
 app.use('/api', projectRoutes);
