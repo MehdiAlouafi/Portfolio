@@ -38,7 +38,7 @@ class Connexion extends React.Component {
     render() {
         if (this.state.loggedIn) return <Redirect to='/dashboard'/>
         return (
-            <div className={`login ${this.state.isOpen}`}>
+            <div onClick={this.props.close} className={`login ${this.state.isOpen}`}>
                 <div className="content">
                     <h1 className='content__message'>Login required</h1>
                     <p className='content__http'>{this.state.message}</p>
