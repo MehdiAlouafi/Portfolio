@@ -1,10 +1,18 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { resolve } = require('path');
 const webpack = require('webpack');
+const {
+    setUpNodeEnvAsProduction,
+    uglisfyJs,
+    webpackHotModuleReplacement,
+    extractCssIntoOwnFile
+} = require('./__webpack__/plugins');
 
 module.exports = env => {
-	const addPlugin = (add, plugin) => add ? plugin : '';
+	const addPlugin = (add, plugin) => add ? plugin : undefined;
 	const ifProd = plugin => addPlugin(env.prod, plugin);
+    const ifDev = plugin => !env.prod ? addPlugin(true, plugin) : undefined;
+    const removedEmpty = array => array.filter(plugin => plugin != undefined);
 	return {
 		entry: resolve(__dirname, 'client/src/index.js'),
 		output: {
@@ -36,32 +44,23 @@ module.exports = env => {
                 {
                     test: /\.scss$/,
                     exclude: /node_modules/,
-                    use: ExtractTextPlugin.extract({
+                    use: env.prod ? ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: ["css-loader", "sass-loader"]
-                    })
+                    }) : [
+                        { loader: 'style-loader' },
+                        { loader: 'css-loader' },
+                        { loader: 'sass-loader' }
+                    ]
                 }
             ]
         },
-        plugins: [
-            new webpack.DefinePlugin({
-                     'process.env': {
-                         'NODE_ENV': JSON.stringify('production')
-                     }
-                 }),
-            new webpack.optimize.UglifyJsPlugin({
-               beautify: false,
-               mangle: {
-                 screw_ie8: true,
-                 keep_fnames: true
-               },
-               compress: {
-                 screw_ie8: true
-               },
-               comments: false
-            }),
-            new ExtractTextPlugin('styles.css')
-        ]
+        plugins: removedEmpty([
+            ifProd(setUpNodeEnvAsProduction),
+            ifProd(uglisfyJs),
+            ifDev(webpackHotModuleReplacement),
+            ifProd(extractCssIntoOwnFile)
+        ])
 	}
 };
 // const base_config = {
