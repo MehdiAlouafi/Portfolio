@@ -17,7 +17,10 @@
             &__kicker {
                 transition: all 0.3s ease-out; margin-top: 25%;
                 &__links {
+                    padding: 15px 20px 15px 0px;
                     color: rgba($black, 0.6);
+                    font-size: 20px;
+                    font-weight: 300;
                     transition: color 0.3s ease-in;
                     &:hover { color: $black }
                 }
