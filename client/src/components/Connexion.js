@@ -1,12 +1,18 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import FontAwesome from 'react-fontawesome';
+const Close = (props) => {
+    return (
+        <span {...props}>
+            <FontAwesome style={{color: '#333'}} size='2x' name='times' />
+        </span>
+    );
+};
 class Connexion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: '',
-            isOpen: false
+            message: ''
         };
     }
     handleSubmit(e) {
@@ -38,8 +44,11 @@ class Connexion extends React.Component {
     render() {
         if (this.state.loggedIn) return <Redirect to='/dashboard'/>
         return (
-            <div onClick={this.props.close} className={`login ${this.state.isOpen}`}>
+            <div className={`login`}>
                 <div className="content">
+                    <Close
+                        className='content__close'
+                        onClick={this.props.close} />
                     <h1 className='content__message'>Login required</h1>
                     <p className='content__http'>{this.state.message}</p>
                     <form onSubmit={this.handleSubmit.bind(this)}>
