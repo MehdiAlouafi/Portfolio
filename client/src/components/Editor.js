@@ -46,7 +46,7 @@ class Editor extends React.Component {
     componentDidMount() {
         const { id: projectId } = this.props.match.params;
         if ( projectId != undefined) {
-            fetch(`http://localhost:8080/api/projects/${projectId}`)
+            fetch(`${window.location.origin}/api/projects/${projectId}`)
                 .then(res => res.json())
                 .then(project => {
                     const [ p ] = project;
@@ -72,7 +72,7 @@ class Editor extends React.Component {
             body: form
         };
         form.append('image', file);
-        fetch(`http://localhost:8080/api/upload/${this.state.title}`, options)
+        fetch(`${window.location.origin}/api/upload/${this.state.title}`, options)
             .then(res => res.text())
             .then(filename => this.setState(prevState => ({
                 ...prevState,
@@ -105,7 +105,7 @@ class Editor extends React.Component {
             body: JSON.stringify(this.state)
         };
         console.log(options)
-        fetch('http://localhost:8080/api/projects', options)
+        fetch(`${window.location.origin}/api/projects`, options)
             .then(res => res.json())
             .then(project => alert(project))
             .catch(err => console.log(err));
@@ -115,7 +115,7 @@ class Editor extends React.Component {
         case 'image':
             return (
                 <span key={idx} className='editor__content__img-container'>
-                    <img src={`http://localhost:8080/img/${node.src}`} alt=""/>
+                    <img src={`${window.location.origin}/img/${node.src}`} alt=""/>
                     <Trash style={{color: '#333'}} onClick={this.deleteElement.bind(this, idx)} />
                 </span>
             );

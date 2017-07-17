@@ -28,7 +28,7 @@ class Connexion extends React.Component {
                 password: password.value
             })
         };
-        fetch('http://localhost:8080/login', options)
+        fetch(`${window.location.origin}/login`, options)
             .then(res => {
                 if (res.status === 401) {
                     throw new Error(res.statusText);

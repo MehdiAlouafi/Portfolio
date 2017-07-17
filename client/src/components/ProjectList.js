@@ -17,7 +17,7 @@ class ProjectList extends React.Component {
         //     this.setState({ projects: JSON.parse(cachedProjects) });
         // } else {
         //     console.log('FETCHING');
-            fetch(`http://localhost:8080/api/allProjects`)
+            fetch(`${window.location.origin}/api/allProjects`)
                 .then(res => res.json())
                 .then(projects => this.setState({ projects, hasFetched: true }))
                 .catch(err => this.setState({ hasFetched: true, err }));

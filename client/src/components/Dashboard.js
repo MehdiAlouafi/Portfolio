@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
             },
             body: JSON.stringify(project)
         };
-        fetch(`http://localhost:8080/api/projects/${project._id}`, options)
+        fetch(`${window.location.origin}/api/projects/${project._id}`, options)
             .then(res => res.json())
             .then(project => {
                 this.setState(prevState => ({
@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
             },
             method: 'DELETE'
         };
-        fetch(`http://localhost:8080/api/projects/${_id}`, options)
+        fetch(`${window.location.origin}/api/projects/${_id}`, options)
             .then(res => {
                 if (res.status !== 200) {
                     throw new Error(res.status)

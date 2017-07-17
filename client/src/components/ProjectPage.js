@@ -12,7 +12,7 @@ class ProjectPage extends React.Component {
     }
     componentDidMount() {
         const { id: projectId } = this.props.match.params;
-        fetch(`http://localhost:8080/api/projects/${projectId}`)
+        fetch(`${window.location.origin}/api/projects/${projectId}`)
             .then(res => res.json())
             .then(project => this.setState({ project: project.pop(), fetched: true }))
             .catch(err => this.setState({ err, fetched: true}));
