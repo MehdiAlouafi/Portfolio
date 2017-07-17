@@ -22,7 +22,7 @@ module.exports = {
 	createOne(req, res, next) {
 		let new_project = Object.assign(new Project(), req.body);
 
-		Project
+        Project
 			.create(new_project)
 			.then(project => res.json(project))
 			.catch(next);
