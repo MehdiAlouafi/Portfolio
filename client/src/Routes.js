@@ -15,6 +15,7 @@ const Routes = () => (
         <Route exact path='/projets' component={ProjectList}/>
         <Route path='/projects/:id' component={ProjectPage} />
         <Route path='/dashboard' component={Dashboard} />
+        <Route exact path='/editor/:id' component={Editor} />
         <Route path='/editor' component={Editor} />
         <Route path='(/|/about)' component={Home} />
         <Route component={NotFound} />
