@@ -43,6 +43,8 @@ class Dashboard extends React.Component {
             .catch(err => err);
     }
     deleteProject(_id) {
+        const choice = confirm('Do you really want to delete this one ?');
+        if (!choice) return;
         const options = {
             headers: {
                 'x-access-token': localStorage.getItem('tokenADM')

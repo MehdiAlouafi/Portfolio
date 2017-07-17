@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Switch from 'rc-switch';
+import FontAwesome from 'react-fontawesome';
+
+const Edit = ({ to, style }) => {
+    return (
+        <Link className='controls__trash' to={to}>
+            <FontAwesome style={style} size='2x' name='pencil' />
+        </Link>
+    );
+};
 
 const ProjectCard = ({ className, project, dashboard, togglePublish, deleteProject }) => {
     if (dashboard) {
@@ -21,6 +30,7 @@ const ProjectCard = ({ className, project, dashboard, togglePublish, deleteProje
                             type='button'>
                             <img style={{width: 20}} src='./assets/images/trash.svg' alt='Une poubelle' />
                         </button>
+                        <Edit to={`/editor/${project._id}`} style={{color: '#333'}} />
                         <Link className="controls__link" to={`/projects/${project._id}`}>Read</Link>
                 </div>
             </div>

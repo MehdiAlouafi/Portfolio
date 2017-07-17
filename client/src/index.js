@@ -1,4 +1,4 @@
-import '../dist/index.scss';
+import './stylesheets/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
