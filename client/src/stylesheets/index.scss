@@ -1,0 +1,26 @@
+@import './_global.scss';
+@import './_home.scss';
+@import './_rc-switch.scss';
+@import './_navbar.scss';
+@import './_dashboard.scss';
+@import './_login.scss';
+@import './_loader.scss';
+@import './_projects.scss';
+@import './_editor.scss';
+.fade-enter{
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: 150ms opacity 400ms ease-in;
+}
+.fade-leave {
+    opacity: 1;
+    z-index: 1;
+}
+.fade-leave.fade-leave-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+}

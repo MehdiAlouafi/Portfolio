@@ -1,0 +1,79 @@
+.editor__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    input[type='text'], textarea {
+        padding: 10px;
+        &:focus, &:active {
+            outline: none;
+        }
+    }
+    span.fa {
+        color: $black;
+        cursor: pointer;
+    }
+    &__title {
+        font-size: 32px;
+        font-weight: 700;
+        background-color: #fafafa;
+        border-bottom: 2px solid #eee;
+        color: $black;
+        border: none;
+        margin-right: auto;
+        width: 100%;
+    }
+    &__upload {
+        margin-bottom: 20px;
+        input {
+            height: 1px;
+            width: 1;
+            display: none;
+        }
+        label {
+            display: block;
+            padding: 15px 25px;
+            background-color: #fff;
+            border: 3px solid $black;
+            color: $black;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: $light_green;
+                color: #fff;
+            }
+        }
+    }
+    &__img-container {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        img {
+            height: 200px;
+            flex: 2;
+        }
+        span.fa {
+
+        }
+    }
+    &__p-container {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        textarea {
+            background-color: #fafafa;
+            color: $black;
+            border: none;
+            flex: 2;
+            font-size: 22px;
+        }
+        span.fa {
+            font-size: 22px;
+            padding-left: 5px;
+        }
+    }
+}
