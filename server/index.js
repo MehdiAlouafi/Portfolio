@@ -49,6 +49,10 @@ mongoose.Promise = global.Promise;
 app.use('/api', projectRoutes);
 app.use('/', userRoutes);
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'))
+})
+
 // error handling middleware
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
