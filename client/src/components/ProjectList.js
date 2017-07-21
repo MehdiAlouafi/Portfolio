@@ -27,7 +27,7 @@ class ProjectList extends React.Component {
         if (!this.state.hasFetched) return <Loader />
         return (
             <div className='projects'>
-                <h1>Project List</h1>
+                <h1>Projets</h1>
                 { this.state.projects.map((project, i) => (
                     <ProjectCard
                         key={i}
