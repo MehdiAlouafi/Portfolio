@@ -18,7 +18,7 @@ const Navigation = (props) => {
                 onClick={closeMenu}
                 activeClassName='active home'
                 exact
-                to='/'>Home</NavLink>
+                to='/'>Accueil</NavLink>
             <NavLink
                 onClick={closeMenu}
                 activeClassName='active projets'
@@ -26,7 +26,7 @@ const Navigation = (props) => {
             <NavLink
                 onClick={closeMenu}
                 activeClassName='active about'
-                to='/about'>About</NavLink>
+                to='/about'>A propos</NavLink>
             <button onClick={() => {
                 closeMenu();
                 showConnexion();
