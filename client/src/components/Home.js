@@ -68,7 +68,7 @@ class Home extends React.Component {
                 {this.state.showLogin && <Connexion close={this.close.bind(this)} />}
                 <div className={`homepage__kicker ${currentRoute === '/about' ? 'about-section' : ''}`}>
                     <h1 className={` hompage__kicker ${pathname} f1-ns f2-m f3`}>
-                        <strong>Salut</strong> ! Je m'appelle Mehdi<br/>
+                        <strong>Salut</strong> ! Je m'appel Mehdi<br/>
                         Et j'apprends à coder, <strong>continuellement</strong>.
                     </h1>
                     { this.renderSocialLinks(currentRoute) }
