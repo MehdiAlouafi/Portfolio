@@ -40,7 +40,7 @@ const options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 };
 
-mongoose.connect(mongo_url, fixtures, options, (err) => console.log(err || 'everything worked fine'));
+mongoose.connect(mongo_url, options, (err) => console.log(err || 'MongoDb connection established'));
 
 const Project = require('./projects/project_controller.js');
 
