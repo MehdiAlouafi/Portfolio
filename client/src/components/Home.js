@@ -47,11 +47,14 @@ class Home extends React.Component {
         if (location === '/about') return null
         return (
             <div className="homepage__kicker__socials">
-                <a  className="f4-m f3-l homepage__kicker__links homeage__kicker__links--twitter"
+                <a  target='_blank'
+                    className="f4-m f3-l homepage__kicker__links homeage__kicker__links--twitter"
                     href="https://twitter.com/AMehdiw">Twitter</a>
-                <a  className="f4-m f3-l homepage__kicker__links homeage__kicker__links--github"
+                <a  target='_blank'
+                    className="f4-m f3-l homepage__kicker__links homeage__kicker__links--github"
                     href="https://github.com/MehdiAlouafi">GitHub</a>
-                <a  className="f4-m f3-l homepage__kicker__links homeage__kicker__links--linkedin"
+                <a  target='_blank'
+                    className="f4-m f3-l homepage__kicker__links homeage__kicker__links--linkedin"
                     href="https://www.linkedin.com/in/mehdi-alouafi-440529116/">LinkedIn</a>
             </div>
         );
