@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
 import ProjectCard from './ProjectCard';
-
+import Loader from './Loader';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -79,7 +79,7 @@ class Dashboard extends React.Component {
                 'x-access-token': localStorage.getItem('tokenADM')
             }
         };
-        fetch('http://localhost:8080/api/projects', options)
+        fetch(`${window.location.origin}/api/projects`, options)
             .then(res => {
                 if (res.status !== 200) {
                     throw new Error(res.statusText)
@@ -100,7 +100,7 @@ class Dashboard extends React.Component {
             errMessage
         } = this.state;
 
-        if (this.state.fetched === false) return <p>Loading...</p>
+        if (this.state.fetched === false) return <Loader />
         if (this.state.error === true ) {
             return (
                 <Redirect to={{
@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
                 }}/>
             );
         }
-        const label = this.state.projects.length === 0 ? 'Pas encore de projets, addOne' : 'addOne';
+        const label = this.state.projects.length === 0 ? 'Pas encore de projets, on en fait un ?' : 'Ajouter un projet';
         const projects = this.state.projects.map((project, i) => (
             <ProjectCard
                 className='dashboard__projects__card'

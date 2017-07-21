@@ -152,7 +152,7 @@ class Editor extends React.Component {
             body: JSON.stringify(this.state)
         };
 
-        fetch('http://localhost:8080/api/projects' + `/${projectId}`, options)
+        fetch(`${window.location.origin}/api/projects/${projectId}`, options)
             .then(res => res.json())
             .then(project => alert(JSON.stringify(project)))
             .catch(err => console.log(err));

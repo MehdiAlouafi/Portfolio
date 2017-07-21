@@ -16,7 +16,9 @@ const ProjectCard = ({ className, project, dashboard, togglePublish, deleteProje
         return (
             <div className={`${className} project`}>
                 <div className="meta">
-                    <h2 className='title'>{project.title}</h2>
+                    <Link to={`/projects/${project._id}`}>
+                        <h2 className='title f3-m'>{project.title}</h2>
+                    </Link>
                     <p className='date'>{project.addedAt}</p>
                 </div>
                 <div className="controls">

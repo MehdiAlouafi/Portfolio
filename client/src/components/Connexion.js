@@ -12,7 +12,8 @@ class Connexion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            message: '',
+            error: false
         };
     }
     handleSubmit(e) {
@@ -39,10 +40,13 @@ class Connexion extends React.Component {
                 localStorage.setItem('tokenADM', data.token);
                 this.setState({ loggedIn: true });
             })
-            .catch(error => this.setState({ message: error.message }));
+            .catch(error => this.setState({ message: 'Invalid Password/Email' , error: true }));
     }
     render() {
         if (this.state.loggedIn) return <Redirect to='/dashboard'/>
+        const httpResponseStyle = this.state.error ? {
+            backgroundColor: 'rgba(232, 30, 70, 0.3)'
+        } : {};
         return (
             <div className={`login`}>
                 <div className="content">
@@ -50,7 +54,7 @@ class Connexion extends React.Component {
                         className='content__close'
                         onClick={this.props.close} />
                     <h1 className='content__message f1-l f2-m f3-s'>Login required</h1>
-                    <p className='content__http'>{this.state.message}</p>
+                    {this.state.error && (<p style={httpResponseStyle} className='content__http'>{this.state.message}</p>) }
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <input type="email" ref={node => this.email = node}/>
                         <input type="password" ref={node => this.password = node}/>

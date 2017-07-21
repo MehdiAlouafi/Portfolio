@@ -16,7 +16,8 @@ a {
   border-left: 15px solid #333;
   border-right: 15px solid #333;
   padding: 50px 10px 0px 10px;
-  height: 100vh; }
+  min-height: 100vh;
+  height: 100%; }
   .app .container {
     display: flex;
     flex-direction: column;
@@ -31,7 +32,10 @@ a {
         transition: all 0.3s ease-out;
         margin-top: 25%; }
         .app .container .homepage__kicker__links {
+          padding: 15px 20px 15px 0px;
           color: rgba(51, 51, 51, 0.6);
+          font-size: 20px;
+          font-weight: 300;
           transition: color 0.3s ease-in; }
           .app .container .homepage__kicker__links:hover {
             color: #333; }
@@ -228,6 +232,12 @@ nav {
     background-color: white;
     max-height: 450px;
     width: 550px; }
+    .login .content__close {
+      position: absolute;
+      display: block;
+      top: 15px;
+      right: 15px;
+      cursor: pointer; }
     .login .content:before {
       content: ' ';
       display: block;

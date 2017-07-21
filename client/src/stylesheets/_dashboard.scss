@@ -65,3 +65,32 @@
         box-shadow: 0px 5px 0px #24A63A;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .dashboard {
+        padding-top: 25px;
+        &__button {
+            margin-right: auto;
+            text-align: center;
+            font-weight: $bold;
+            width: 200px;
+        }
+        .controls {
+            flex-wrap: wrap;
+            &__switch, &__trash, &__link {
+                margin-right: initial;
+            }
+            &__link {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .dashboard {
+        &__projects__card.project {
+            flex-direction: column;
+        }
+    }
+}

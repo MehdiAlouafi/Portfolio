@@ -1,4 +1,5 @@
 .app {
+    position: relative;
     padding-top: 50px;
     border-left: 15px solid $black;
     border-right: 15px solid $black;
@@ -14,6 +15,7 @@
         width: 100%;
         margin: 0 auto;
         &__open-menu {
+            display: none;
             z-index: 999;
             position: fixed;
             right: 20px;
@@ -43,10 +45,13 @@
         }
     }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 520px) {
     .app {
         border: none;
         padding: 10px 20px;
+        .container__open-menu {
+            display: block ;
+        }
     }
     .homepage {
         padding-top: 25%;
