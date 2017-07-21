@@ -13,19 +13,49 @@
         max-width: $container;
         width: 100%;
         margin: 0 auto;
+        &__open-menu {
+            z-index: 999;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            padding: 15px 25px;
+            font-size: 23px;
+            outline: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
         .homepage {
             width: 100%;
             &__kicker {
                 transition: all 0.3s ease-out; margin-top: 25%;
+                &.about-section {
+                    margin-top: initial;
+                }
                 &__links {
                     padding: 15px 20px 15px 0px;
                     color: rgba($black, 0.6);
-                    font-size: 20px;
                     font-weight: 300;
                     transition: color 0.3s ease-in;
                     &:hover { color: $black }
                 }
             }
         }
+    }
+}
+@media screen and (max-width: 400px) {
+    .app {
+        border: none;
+        padding: 10px 20px;
+    }
+    .homepage {
+        padding-top: 25%;
+        &__kicker {
+            margin: initial !important;
+            &.about-section {
+                margin: initial !important;
+            }
+        }
+
     }
 }

@@ -49,7 +49,7 @@ class Connexion extends React.Component {
                     <Close
                         className='content__close'
                         onClick={this.props.close} />
-                    <h1 className='content__message'>Login required</h1>
+                    <h1 className='content__message f1-l f2-m f3-s'>Login required</h1>
                     <p className='content__http'>{this.state.message}</p>
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <input type="email" ref={node => this.email = node}/>
