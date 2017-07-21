@@ -1,4 +1,15 @@
 nav {
+    #trigger-modal {
+        display: none;
+        pointer-events: none;
+        background-color: transparent;
+        border: 2px solid $black;
+        cursor: pointer;
+        &:active , &:focus {
+            outline: none;
+            background-color: #eee;
+        }
+    }
     width: 100%;
     border-bottom: 5px solid #FAFAFA;
     padding: 0px 20px 5px 20px;
@@ -22,7 +33,7 @@ nav {
                 position: absolute;
                 bottom: -10px;
                 left: 0; right: 0;
-                background-color: $light_green;
+                background-color: $blue;
                 content: ' ';
             }
         }
@@ -30,12 +41,52 @@ nav {
 }
 
 @media screen and (max-width: 400px) {
+    .home {
+        border: none;
+        padding: 5px 15px;
+    }
     nav {
         position: fixed;
-        bottom: 0; left: 0; right: 0;
+        top: -100%; left: 0; right: 0;
+        height: 100%;
+        transition: all 0.3s ease-in-out;
         background-color: #333;
         padding: 20px;
         text-align: center;
-        a {color: #fff;}
+        border-bottom: none;
+        z-index: 9;
+        display: flex;
+        flex-direction: column;
+        &.is-open {
+            top: 0;
+        }
+        #trigger-modal {
+            display: block;
+            pointer-events: all;
+        }
+        &.is-open {
+            top: 0;
+        }
+        a.active {color: #fff;}
+        a {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bolder;
+            margin: 5px;
+            color: $black;
+            background-color: #FAFAFA;
+            &.active {
+                background-color: $blue;
+                &:after {
+                    content: none
+                }
+            }
+        }
+        button {
+            flex: 1;
+            margin: 5px;
+        }
     }
 }

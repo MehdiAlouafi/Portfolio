@@ -5,6 +5,7 @@ import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-do
 
 import Navigation from './components/Navigation';
 import Routes from './Routes';
+import Connexion from './components/Connexion';
 
 import FontAwesome from 'react-fontawesome';
 
@@ -23,25 +24,33 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openMenu: false
+            openMenu: false,
+            showLogin: false,
         };
         this.toggleMenu = this.toggleMenu.bind(this);
+        this.showConnexion = this.showConnexion.bind(this)
     }
     toggleMenu() {
         this.setState(prevState => ({
             openMenu: !prevState.openMenu
         }));
     }
-
+    showConnexion() {
+        this.setState(prevState => ({
+            showLogin: !prevState.showLogin
+        }))
+    }
     render() {
         return (
             <Router>
                 <div className='app'>
                     <div className="container">
+                        { this.state.showLogin && <Connexion close={this.showConnexion}/>}
                         <Route render={ (props) => (
                             <Navigation
                                 {...props}
                                 {...this.state}
+                                showConnexion={this.showConnexion}
                                 closeMenu={this.toggleMenu}/>
                         )} />
                         <Routes />
